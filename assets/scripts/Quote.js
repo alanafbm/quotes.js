@@ -11,8 +11,6 @@ export default class Quote {
 
     init(){
         this.clickButton();
-        console.log('init');
-        console.log(this.elBlockQuote);
     }
 
     clickButton(){
@@ -20,7 +18,7 @@ export default class Quote {
         let elBlockQuote = document.querySelector('[data-js-blockquote]');
             if(!elBlockQuote){
                 this.injectQuote();
-            }else{
+            }else if(this.random().nb != this.random().nb){
                 elBlockQuote.remove();
                 this.injectQuote();
             }
@@ -40,13 +38,11 @@ export default class Quote {
             let quotesRandom = this.random().quotesRandom;
             
             for (const prop in quotesRandom){
-
-                let regExp = new RegExp('{{' + prop + '}}', 'g');
+                const regExp = new RegExp('{{' + prop + '}}', 'g');
                 cloneTemplate.innerHTML = cloneTemplate.innerHTML.replace(regExp, quotesRandom[prop])
             }
                    
         }
-
 
         const newTemplate = document.importNode(cloneTemplate.content, true);
 
@@ -59,7 +55,6 @@ export default class Quote {
                 elBlockQuote.classList.remove('hidden')
             }
         }, 100);
-
 
     }
 
